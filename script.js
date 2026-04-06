@@ -55,6 +55,7 @@ const elBtnUpload   = $("btn-upload");
 const elFileUpload  = $("file-upload");
 const elBtnDownload = $("btn-download");
 const elBtnCopy     = $("btn-copy");
+const elBtnCopyLink = $("btn-copy-link");
 const elBtnFormat   = $("btn-format");
 const elBtnInstall  = $("btn-install");
 const elPkgInput    = $("pkg-input");
@@ -85,6 +86,35 @@ CodeMirror.defineMode("cosmotalker-overlay", function() {
 });
 
 /* ════════════════════════════════════════════════
+   CODEMIRROR AUTOCOMPLETE (CosmoTalker)
+════════════════════════════════════════════════ */
+function cosmoHint(editor) {
+  const cursor = editor.getCursor();
+  const token = editor.getTokenAt(cursor);
+  const start = token.start;
+  const end = cursor.ch;
+  const word = token.string;
+
+  if (!/^[a-zA-Z_]+$/.test(word)) return null;
+
+  const keywords = [
+    "cosmotalker", "apod", "celestrak", "spacex", "wiki",
+    "planet_info", "feedback", "search", "get", "get_fun_fact", "img",
+    "import", "print", "try", "except", "True", "False", "None",
+    "def", "class", "if", "elif", "else", "for", "while", "return"
+  ];
+
+  const list = keywords.filter(k => k.startsWith(word) && k !== word);
+  if (!list.length) return null;
+
+  return {
+    list: list,
+    from: CodeMirror.Pos(cursor.line, start),
+    to: CodeMirror.Pos(cursor.line, end)
+  };
+}
+
+/* ════════════════════════════════════════════════
    CODEMIRROR SETUP
 ════════════════════════════════════════════════ */
 function initEditor() {
@@ -105,11 +135,14 @@ function initEditor() {
     extraKeys: {
       "Ctrl-Enter": runCode,
       "Cmd-Enter":  runCode,
+      "Ctrl-Space": "autocomplete",
+      "Enter": "newlineAndIndent",
       "Tab": cm => {
         if (cm.somethingSelected()) cm.indentSelection("add");
         else cm.replaceSelection("    ", "end");
       },
     },
+    hintOptions: { hint: cosmoHint },
     lineWrapping: false,
     gutters: ["CodeMirror-linenumbers"],
   });
@@ -119,6 +152,13 @@ function initEditor() {
   editor.on("change", () => {
     clearTimeout(editor._saveTimer);
     editor._saveTimer = setTimeout(saveCode, 1000);
+  });
+
+  // Auto-trigger hint on typing
+  editor.on("inputRead", function(cm, change) {
+    if (!cm.state.completionActive && /^[a-zA-Z_]$/.test(change.text[0])) {
+      CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
+    }
   });
 }
 
@@ -154,11 +194,17 @@ async function initPyodide() {
 
     pyodide = await loadPyodide({
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/",
-      stdout: text => appendOutput(text, "stdout"),
-      stderr: text => appendOutput(text, "stderr"),
+      stdout: text => {
+        if (text.startsWith("Loading ") || text.startsWith("Loaded ")) return;
+        appendOutput(text, "stdout");
+      },
+      stderr: text => {
+        if (text.startsWith("Loading ") || text.startsWith("Loaded ")) return;
+        appendOutput(text, "stderr");
+      },
     });
 
-    appendOutput("✅ Pyodide loaded successfully.\n", "success");
+    
 
     /* Redirect Python sys.stdout / sys.stderr → JS callbacks */
     pyodide.runPython(`
@@ -194,9 +240,9 @@ builtins.input = _pyrun_input
     await pyodide.loadPackage("micropip");
     const micropip = pyodide.pyimport("micropip");
 
-    appendOutput("📦 Installing CosmoTalker via micropip...\n", "info");
+    appendOutput("📦 Installing CosmoTalker...\n", "info");
     // Install CosmoTalker (and known dependencies)
-    await micropip.install(["cosmodb", "cosmotalker"]);
+    await micropip.install(["cosmodb", "cosmotalker==2.62", "requests", "pytz"]);
 
     appendOutput("✅ CosmoTalker installed successfully!\n\n", "success");
 
@@ -228,6 +274,7 @@ try:
 except AttributeError:
     pass
 print("You can now explore the cosmos with Python.\\n")
+print("-"*50 + "\\n")
     `);
 
     stopLoadingTimer();
@@ -590,6 +637,7 @@ function bindEvents() {
     if (confirm("Clear editor?")) { editor.setValue(""); saveCode(); }
   });
   elBtnCopy.addEventListener("click",    copyCode);
+  elBtnCopyLink.addEventListener("click", () => shareAsCode(() => editor.getValue(), showToast));
   elBtnFormat.addEventListener("click",  formatCode);
   elBtnInstall.addEventListener("click", installPackages);
 
