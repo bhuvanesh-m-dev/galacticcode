@@ -194,11 +194,17 @@ async function initPyodide() {
 
     pyodide = await loadPyodide({
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/",
-      stdout: text => appendOutput(text, "stdout"),
-      stderr: text => appendOutput(text, "stderr"),
+      stdout: text => {
+        if (text.startsWith("Loading ") || text.startsWith("Loaded ")) return;
+        appendOutput(text, "stdout");
+      },
+      stderr: text => {
+        if (text.startsWith("Loading ") || text.startsWith("Loaded ")) return;
+        appendOutput(text, "stderr");
+      },
     });
 
-    appendOutput("✅ Pyodide loaded successfully.\n", "success");
+    
 
     /* Redirect Python sys.stdout / sys.stderr → JS callbacks */
     pyodide.runPython(`
@@ -234,9 +240,9 @@ builtins.input = _pyrun_input
     await pyodide.loadPackage("micropip");
     const micropip = pyodide.pyimport("micropip");
 
-    appendOutput("📦 Installing CosmoTalker via micropip...\n", "info");
+    appendOutput("📦 Installing CosmoTalker...\n", "info");
     // Install CosmoTalker (and known dependencies)
-    await micropip.install(["cosmodb", "cosmotalker"]);
+    await micropip.install(["cosmodb", "cosmotalker==2.62", "requests", "pytz"]);
 
     appendOutput("✅ CosmoTalker installed successfully!\n\n", "success");
 
@@ -268,6 +274,7 @@ try:
 except AttributeError:
     pass
 print("You can now explore the cosmos with Python.\\n")
+print("-"*50 + "\\n")
     `);
 
     stopLoadingTimer();
