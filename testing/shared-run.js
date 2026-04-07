@@ -90,8 +90,14 @@
     
     const py = await loadPyodideFn({
       indexURL: "https://cdn.jsdelivr.net/pyodide/v0.29.3/full/",
-      stdout: t => write(t, false),
-      stderr: t => write(t, true),
+      stdout: t => {
+        if (t.startsWith("Loading ") || t.startsWith("Loaded ")) return;
+        write(t, false);
+      },
+      stderr: t => {
+        if (t.startsWith("Loading ") || t.startsWith("Loaded ")) return;
+        write(t, true);
+      },
     });
 
     /* Redirect Python stdout/stderr through JS callbacks */
@@ -136,7 +142,7 @@ builtins.input = _shared_input
     await py.loadPackage("micropip");
     await py.runPythonAsync(`
 import micropip
-await micropip.install(["cosmodb", "cosmotalker"])
+await micropip.install(["cosmodb", "cosmotalker==2.62", "requests", "pytz"])
 
 import sys
 import types
