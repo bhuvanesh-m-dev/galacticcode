@@ -273,7 +273,7 @@ try:
     print(f"CosmoTalker version: {ct.__version__}")
 except AttributeError:
     pass
-print("You can now explore the cosmos with Python.\\n")
+print("You can now explore the cosmos with your Python code :).\\n")
 print("-"*50 + "\\n")
     `);
 
