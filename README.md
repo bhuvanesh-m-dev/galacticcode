@@ -9,7 +9,7 @@
 [![Powered by Pyodide](https://img.shields.io/badge/Powered_by-Pyodide-38bdf8?style=for-the-badge&logo=python&logoColor=white)](https://pyodide.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-<img src="https://raw.githubusercontent.com/bhuvanesh-m-dev/cosmotools/refs/heads/main/py-run/img/preview-1.png" alt="GalacticCode Interface Preview" width="800" style="border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); margin-top: 15px; margin-bottom: 15px;" />
+<img src="https://raw.githubusercontent.com/bhuvanesh-m-dev/galacticcode/refs/heads/main/img/1.png" alt="GalacticCode Interface Preview" width="800" style="border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); margin-top: 15px; margin-bottom: 15px;" />
 
 </div>
 
