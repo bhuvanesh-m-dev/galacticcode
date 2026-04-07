@@ -1,0 +1,263 @@
+/* ═══════════════════════════════════════════════════
+   GalacticCode by Py-Run — Code the Cosmos
+   themes.css  |  All theme variables + font setup
+   https://github.com/bhuvanesh-m-dev/cosmotools
+═══════════════════════════════════════════════════ */
+
+/* ── GOOGLE FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;800&display=swap');
+
+/* ════════════════════════════════════════════════
+   THEME: GALACTIC SPACE (default)
+   Deep cosmos base · Nebula purple · Star blue
+════════════════════════════════════════════════ */
+[data-theme="galactic-space"] {
+  --bg-base:        #050814;
+  --bg-surface:     #0b1021;
+  --bg-raised:      #11182e;
+  --bg-hover:       #182340;
+  --border:         #1d2a4d;
+  --border-bright:  #34487a;
+  --accent:         #a855f7;
+  --accent-glow:    #a855f750;
+  --accent-dim:     #9333ea;
+  --accent2:        #38bdf8;
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+  --run-bg:         #7e22ce;
+  --run-bg-h:       #9333ea;
+  --run-text:       #ffffff;
+  --success:        #34d399;
+  --error:          #f87171;
+  --warning:        #fbbf24;
+  --output-bg:      #070c18;
+  --shadow:         0 8px 40px #00000070;
+  --logo-gradient:  linear-gradient(135deg, #a855f7, #38bdf8);
+  --header-bg:      #050814bb;
+  --noise:          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ════════════════════════════════════════════════
+   THEME: NEON NIGHT
+   Pure black base · Purple glow · Violet accent
+════════════════════════════════════════════════ */
+[data-theme="neon-night"] {
+  --bg-base:        #0d0015;
+  --bg-surface:     #12001f;
+  --bg-raised:      #18002d;
+  --bg-hover:       #220040;
+  --border:         #2d0060;
+  --border-bright:  #5500bb;
+  --accent:         #c084fc;
+  --accent-glow:    #c084fc40;
+  --accent-dim:     #a855f7;
+  --accent2:        #f0abfc;
+  --text-primary:   #f3e8ff;
+  --text-secondary: #b07cd8;
+  --text-muted:     #6b3b8a;
+  --run-bg:         #a855f7;
+  --run-bg-h:       #c084fc;
+  --run-text:       #ffffff;
+  --success:        #86efac;
+  --error:          #f87171;
+  --warning:        #fde68a;
+  --output-bg:      #08000f;
+  --shadow:         0 8px 40px #8000ff25;
+  --logo-gradient:  linear-gradient(135deg, #c084fc, #f0abfc);
+  --header-bg:      #0a001299;
+  --noise:          none;
+}
+
+/* ════════════════════════════════════════════════
+   THEME: FOREST DUSK
+   Dark green base · Emerald accent · Sage tones
+════════════════════════════════════════════════ */
+[data-theme="forest-dusk"] {
+  --bg-base:        #0c1410;
+  --bg-surface:     #101a14;
+  --bg-raised:      #16221a;
+  --bg-hover:       #1f2e24;
+  --border:         #243328;
+  --border-bright:  #365240;
+  --accent:         #4ade80;
+  --accent-glow:    #4ade8040;
+  --accent-dim:     #22c55e;
+  --accent2:        #86efac;
+  --text-primary:   #e2f0e8;
+  --text-secondary: #7aaa8a;
+  --text-muted:     #3d6648;
+  --run-bg:         #22c55e;
+  --run-bg-h:       #4ade80;
+  --run-text:       #071a0c;
+  --success:        #86efac;
+  --error:          #fca5a5;
+  --warning:        #fde68a;
+  --output-bg:      #070e0a;
+  --shadow:         0 8px 40px #00000070;
+  --logo-gradient:  linear-gradient(135deg, #4ade80, #86efac);
+  --header-bg:      #09100b99;
+  --noise:          none;
+}
+
+/* ════════════════════════════════════════════════
+   THEME: CANDY POP
+   Light lavender base · Fuchsia accent · Bright
+════════════════════════════════════════════════ */
+[data-theme="candy-pop"] {
+  --bg-base:        #fdf4ff;
+  --bg-surface:     #ffffff;
+  --bg-raised:      #f9f0fd;
+  --bg-hover:       #f3e8ff;
+  --border:         #e9d5ff;
+  --border-bright:  #c084fc;
+  --accent:         #d946ef;
+  --accent-glow:    #d946ef25;
+  --accent-dim:     #a21caf;
+  --accent2:        #f472b6;
+  --text-primary:   #1a0030;
+  --text-secondary: #7c3aed;
+  --text-muted:     #c084fc;
+  --run-bg:         #d946ef;
+  --run-bg-h:       #a21caf;
+  --run-text:       #ffffff;
+  --success:        #16a34a;
+  --error:          #dc2626;
+  --warning:        #d97706;
+  --output-bg:      #fce7f3;
+  --shadow:         0 8px 40px #d946ef18;
+  --logo-gradient:  linear-gradient(135deg, #d946ef, #f472b6);
+  --header-bg:      #fdf4ffee;
+  --noise:          none;
+}
+
+/* ════════════════════════════════════════════════
+   THEME: ROSE GOLD
+   Warm dark base · Orange-amber accent · Coral
+════════════════════════════════════════════════ */
+[data-theme="rose-gold"] {
+  --bg-base:        #1a0f0e;
+  --bg-surface:     #221412;
+  --bg-raised:      #2c1a18;
+  --bg-hover:       #3a2220;
+  --border:         #4a2d2a;
+  --border-bright:  #7a4540;
+  --accent:         #fb923c;
+  --accent-glow:    #fb923c40;
+  --accent-dim:     #f97316;
+  --accent2:        #fda4af;
+  --text-primary:   #fef0ec;
+  --text-secondary: #d49590;
+  --text-muted:     #7a4c48;
+  --run-bg:         #f97316;
+  --run-bg-h:       #fb923c;
+  --run-text:       #ffffff;
+  --success:        #86efac;
+  --error:          #fca5a5;
+  --warning:        #fde68a;
+  --output-bg:      #0e0807;
+  --shadow:         0 8px 40px #f9731620;
+  --logo-gradient:  linear-gradient(135deg, #fb923c, #fda4af);
+  --header-bg:      #160c0b99;
+  --noise:          none;
+}
+
+/* ════════════════════════════════════════════════
+   THEME: MONO INK
+   Clean white base · Pure black accent · Minimal
+════════════════════════════════════════════════ */
+[data-theme="mono-ink"] {
+  --bg-base:        #f7f7f5;
+  --bg-surface:     #ffffff;
+  --bg-raised:      #f0f0ed;
+  --bg-hover:       #e8e8e4;
+  --border:         #d4d4ce;
+  --border-bright:  #a0a09a;
+  --accent:         #111111;
+  --accent-glow:    #11111115;
+  --accent-dim:     #333333;
+  --accent2:        #555555;
+  --text-primary:   #111111;
+  --text-secondary: #555555;
+  --text-muted:     #999999;
+  --run-bg:         #111111;
+  --run-bg-h:       #333333;
+  --run-text:       #ffffff;
+  --success:        #166534;
+  --error:          #991b1b;
+  --warning:        #92400e;
+  --output-bg:      #f0f0ed;
+  --shadow:         0 8px 40px #00000015;
+  --logo-gradient:  linear-gradient(135deg, #111111, #777777);
+  --header-bg:      #f7f7f5ee;
+  --noise:          none;
+}
+
+/* ════════════════════════════════════════════════
+   BASE FONT & BODY FOUNDATION
+   (depends on theme vars — kept here so themes.css
+    is truly self-contained for the base layer)
+════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  overflow: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Noise texture overlay for dark-ocean theme */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: var(--noise);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Global scrollbar using theme vars */
+::-webkit-scrollbar         { width: 6px; height: 6px; }
+::-webkit-scrollbar-track   { background: transparent; }
+::-webkit-scrollbar-thumb   { background: var(--border-bright); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Global selection */
+::selection { background: var(--accent-glow); color: var(--text-primary); }
+
+/* CodeMirror font inherits theme font */
+.CodeMirror {
+  height: 100% !important;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  font-size: 14px;
+  line-height: 1.65;
+  background: transparent !important;
+}
+
+.CodeMirror-scroll  { min-height: 100%; }
+.CodeMirror-gutters { border-right: 1px solid var(--border) !important; }
+
+/* Fix for mono-ink theme scrollbar */
+[data-theme="mono-ink"] ::-webkit-scrollbar-thumb {
+  background: #a0a09a;
+}
+[data-theme="mono-ink"] ::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
